@@ -7,7 +7,38 @@
     {% if user.is_authenticated %}
         <h1>Hola {{ user.username }}</h1>
         <a href="{% url 'sign_out' %}">Cerrar sesión</a>
-        <a href="{% url 'tablón' %}">Tablón de Anuncios</a>
+        <a href="{% url 'PerfilUsuario' %}">Perfil</a>
+        <a href="{% url 'NuevoMensaje' %}">Publicar Mensaje</a>
+        <a href="{% url 'ConsultarSiguiendo' %}">Siguiendo</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Usuario</td>
+                    <td>Fecha</td>
+                    <td>Mensaje</td>
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% if mensajes %}
+                {% for mensaje in mensajes %}
+                <tr>
+                    <td>{{mensaje.usuario}}</td>
+                    <td>{{mensaje.fecha}}</td>
+                    <td>{{mensaje.mensaje}}</td>
+                    <td>
+                        <a href="{% url 'NuevoMensajeEditar' mensaje.id%}">Republicar</a>
+                        <a href="{% url 'NuevoMensajeEliminar' mensaje.id%}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <h1>No hay mensajes publicados</h1>
+                {% endif %}
+            </tbody>
+            
+            
+            </table>
     {% else %}
         <a href="{% url 'sign_up' %}">Registrate</a>
         <a href="{% url 'sign_in' %}">Iniciar sesión</a>

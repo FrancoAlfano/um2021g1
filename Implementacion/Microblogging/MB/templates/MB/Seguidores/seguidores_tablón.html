@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Siguiendo{% endblock %}
+
+{% block content %}
+<a href="{% url 'tablón' %}">inicio</a>
+<a href="{% url 'ListarUsuarios' %}">añadir</a>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Usuario</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if seguidores %}
+        {% for seguidor in seguidores %}
+        <tr>
+            <td>{{seguidor.seguidor}}</td>
+            <td>
+                <a href="{% url 'SiguiendoEliminar' seguidor.id%}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No hay personas a las que estes siguiendo</h1>
+        {% endif %}
+    </tbody>
+    
+    
+</table>
+
+{% endblock content %}

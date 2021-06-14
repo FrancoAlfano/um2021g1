@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Perfil{% endblock %}
+{% block content %}
+<a href="{% url 'tablón' %}">inicio</a>
+ <form action="" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <input type="submit" value="enviar">
+
+ </form>
+
+{% endblock content %}
