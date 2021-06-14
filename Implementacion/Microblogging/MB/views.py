@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.views.generic import CreateView, TemplateView
-from .models import Perfil, Mensajes, Agregar_Seguidor
+from .models import Perfil, Mensajes
+from .models import Agregar_Seguidor
 from .forms import SignUpForm, MensajesForm,Agregar_SeguidorForm,PerfilForm
 from django.contrib.auth.views import LoginView, LogoutView 
 

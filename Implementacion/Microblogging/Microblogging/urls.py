@@ -32,7 +32,7 @@ urlpatterns = [
     path('siguiendo/', login_required(consultar_siguiendo), name='ConsultarSiguiendo'),
     path('siguiendo/eliminar/<int:id_siguiendo>', login_required(eliminar_siguiendo), name='SiguiendoEliminar'),
     path('siguiendo/añadir/', login_required(listar_usuarios), name='ListarUsuarios'),
-    path('siguiendo/añadir/seguir/<int:id_siguido>', login_required(añadir_seguido), name='SeguirUsuarios'),
+    path('siguiendo/añadir/seguir/<int:id_seguido>', login_required(añadir_seguido), name='SeguirUsuarios'),
     path('perfil/', login_required(perfil_usuario), name='PerfilUsuario'),
     path('perfil/editar', login_required(editar_perfil), name='EditarPerfil'),
 ]
