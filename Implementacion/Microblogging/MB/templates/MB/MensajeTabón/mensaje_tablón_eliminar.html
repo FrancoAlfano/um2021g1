@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Eliminar{% endblock %}
+{% block content %}
+ <form action="" method="POST">
+    {% csrf_token %}
+    <h3>¿desea eliminar el mensaje de {{ mensaje.usuario }}?</h3>
+    <button type="submit">Si, eliminar</button>
+    <a href="{% url 'tablón' %}">Cancelar</a>
+
+ </form>
+
+{% endblock content %}

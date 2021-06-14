@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block content %}
+<a href="{% url 'tablón' %}">inicio</a>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Usuario</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if usuarios %}
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{usuario.usuario}}</td>
+            <td>
+                <a href="{% url 'SeguirUsuarios' usuario.id%}">Seguir</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <h1>No hay usuarios registrados</h1>
+        {% endif %}
+    </tbody>
+    
+    
+</table>
+
+{% endblock content %}

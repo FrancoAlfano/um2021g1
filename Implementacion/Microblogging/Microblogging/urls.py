@@ -15,16 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from MB.views import SignUpView, BienvenidaView, SignInView, SignOutView,Prueba, tablón_anuncios
+from MB.views import SignUpView, BienvenidaView, SignInView, SignOutView, tablón_anuncios, publicar_mensaje_tablón, republicar_mensaje_tablón, eliminar_mensaje_tablón, consultar_siguiendo,eliminar_siguiendo,listar_usuarios,añadir_seguido,perfil_usuario,editar_perfil
 from django.contrib.auth.decorators import login_required
 #from MB import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', BienvenidaView.as_view(), name='bienvenida'),
+    #path('', BienvenidaView.as_view(), name='bienvenida'),
+    path('',tablón_anuncios, name='tablón'),
     path('registrate/', SignUpView.as_view(), name='sign_up'),
     path('incia-sesion/', SignInView.as_view(), name='sign_in'),
     path('cerrar-sesion/', SignOutView.as_view(), name='sign_out'),
-    path('prueba/',login_required(Prueba.as_view()), name='bienvenida'),
-    path('anuncios/',login_required(tablón_anuncios), name='tablón')
+    path('MensajeTablón/', login_required(publicar_mensaje_tablón), name='NuevoMensaje'),
+    path('republicar/<int:id_mensaje>', login_required(republicar_mensaje_tablón), name='NuevoMensajeEditar'),
+    path('eliminar/<int:id_mensaje>', login_required(eliminar_mensaje_tablón), name='NuevoMensajeEliminar'),
+    path('siguiendo/', login_required(consultar_siguiendo), name='ConsultarSiguiendo'),
+    path('siguiendo/eliminar/<int:id_siguiendo>', login_required(eliminar_siguiendo), name='SiguiendoEliminar'),
+    path('siguiendo/añadir/', login_required(listar_usuarios), name='ListarUsuarios'),
+    path('siguiendo/añadir/seguir/<int:id_siguido>', login_required(añadir_seguido), name='SeguirUsuarios'),
+    path('perfil/', login_required(perfil_usuario), name='PerfilUsuario'),
+    path('perfil/editar', login_required(editar_perfil), name='EditarPerfil'),
 ]

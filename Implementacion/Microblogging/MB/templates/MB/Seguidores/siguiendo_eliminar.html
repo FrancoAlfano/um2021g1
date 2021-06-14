@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Eliminar Seguidor{% endblock %}
+{% block content %}
+ <form action="" method="POST">
+    {% csrf_token %}
+    <h3>¿desea dejar de seguir a el usuario {{ siguiendo.seguidor }}?</h3>
+    <button type="submit">Si, eliminar</button>
+    <a href="{% url 'ConsultarSiguiendo' %}">Cancelar</a>
+
+ </form>
+
+{% endblock content %}

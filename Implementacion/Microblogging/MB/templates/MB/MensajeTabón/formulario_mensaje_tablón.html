@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Mensaje{% endblock %}
+{% block content %}
+<h1>Nuevo Mensaje</h1>
+<a href="{% url 'tablón' %}">inicio</a>
+ <form action="" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <input type="submit" value="enviar">
+
+ </form>
+
+{% endblock content %}
