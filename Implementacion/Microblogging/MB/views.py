@@ -7,6 +7,8 @@ from .forms import SignUpForm, MensajesForm,Agregar_SeguidorForm,PerfilForm
 from django.contrib.auth.views import LoginView, LogoutView 
 
 
+#ENDPOINT LOGIN
+
 class SignUpView(CreateView):
     model = Perfil
     form_class = SignUpForm
@@ -22,28 +24,11 @@ class SignUpView(CreateView):
         login(self.request, usuario)
         return redirect('/')
 
-class BienvenidaView(TemplateView):
-   template_name = 'MB/bienvenida.html'
-
 class SignInView(LoginView):
     template_name = 'iniciar_sesion.html'
 
 class SignOutView(LogoutView):
     pass
-
-#TODO:encontrar la manera de redirigir la pagina que no esta autenticada
-#class Prueba(TemplateView):
-    #template_name = 'MB/prueba.html'
-
-    # def get(self, request, *args, **kwargs):
-    #     username = request.POST['username']
-    #     password = request.POST['password1']
-    #     usuario = authenticate(request, username=username, password=password)
-    #     login(request, user)
-    #     if usuario is not None:
-    #         pass
-    #     else:
-    #         print("no paso")
     
 #ENDPOINT TABLÓN DE ANUNCIOS
 
@@ -85,21 +70,21 @@ def eliminar_mensaje_tablón(request, id_mensaje):
 #ENDPOINT SEGUIDORES Y SEGUIDOS
 
 def consultar_siguiendo(request):
-    seguidores=Agregar_Seguidor.objects.filter(usuario=request.user.perfil)
-    contexto={'seguidores':seguidores}
-    return render(request, 'MB/Seguidores/seguidores_tablón.html',contexto)
+    siguiendo=Agregar_Seguidor.objects.filter(usuario=request.user.perfil)
+    contexto={'siguiendo':siguiendo}
+    return render(request, 'MB/Siguiendo/siguiendo_tablón.html',contexto)
 
 def eliminar_siguiendo(request, id_siguiendo):
     siguiendo=Agregar_Seguidor.objects.get(id=id_siguiendo)
     if request.method == 'POST':
         siguiendo.delete()
         return redirect('ConsultarSiguiendo')
-    return render(request, 'MB/Seguidores/siguiendo_eliminar.html', {'siguiendo':siguiendo})
+    return render(request, 'MB/Siguiendo/siguiendo_eliminar.html', {'siguiendo':siguiendo})
 
 def listar_usuarios(request):
     usuarios=Perfil.objects.all()
     contexto={'usuarios':usuarios}
-    return render(request, 'MB/Seguidores/lista_usuarios.html',contexto)
+    return render(request, 'MB/Siguiendo/lista_usuarios.html',contexto)
 
 #TODO:corregir
 def añadir_seguido(request, id_seguido):

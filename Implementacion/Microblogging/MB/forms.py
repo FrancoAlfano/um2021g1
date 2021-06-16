@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 from .models import Perfil, Mensajes, Agregar_Seguidor
 
 class SignUpForm(UserCreationForm):
-    first_name = forms.CharField(max_length=140, required=True)
-    last_name = forms.CharField(max_length=140, required=False)
+    nombre = forms.CharField(max_length=140, required=True)
+    apellido = forms.CharField(max_length=140, required=False)
     email = forms.EmailField(required=True)
 
     class Meta:
@@ -14,8 +14,8 @@ class SignUpForm(UserCreationForm):
         fields = (
             'username',
             'email',
-            'first_name',
-            'last_name',
+            'nombre',
+            'apellido',
             'password1',
             'password2',
         )
@@ -34,4 +34,4 @@ class PerfilForm(forms.ModelForm):
     descripcion = forms.CharField(widget=forms.Textarea)
     class Meta:
         model = Perfil
-        fields=['first_name','last_name','email','descripcion']
+        fields=['nombre','apellido','email','descripcion','telefono','cargo','imagen']
