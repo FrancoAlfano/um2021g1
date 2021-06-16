@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 seleccion_estado_etiqueta=[(1,'trabajo'),(2,'cuentas'),(3,'facturas')]
 
 class Perfil(models.Model):
-    usuario=models.OneToOneField(User, on_delete=models.CASCADE)
+    usuario=models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
     nombre=models.CharField(max_length=50, blank=True)
     apellido=models.CharField(max_length=50, blank=True)
     email=models.EmailField(blank=True)

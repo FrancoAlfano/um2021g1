@@ -12,6 +12,10 @@
             <td>Nombre</td>
             <td>Apellido</td>
             <td>Email</td>
+            <td>Telefono</td>
+            <td>Cargo</td>
+            <td>Imagen</td>
+            <td>Descripcion</td>
         </tr>
     </thead>
     <tbody>
@@ -19,9 +23,12 @@
         {% for usuario in usuarios %}
         <tr>
             <td>{{usuario.usuario}}</td>
-            <td>{{usuario.first_name}}</td>
-            <td>{{usuario.last_name}}</td>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.apellido}}</td>
             <td>{{usuario.email}}</td>
+            <td>{{usuario.telefono}}</td>
+            <td>{{usuario.cargo}}</td>
+            <img src={{ usuario.imagen }}>
             <td>{{usuario.descripcion}}</td>
         </tr>
         {% endfor %}

@@ -17,7 +17,7 @@
         <tr>
             <td>{{usuario.usuario}}</td>
             <td>
-                <a href="{% url 'SeguirUsuarios' usuario.id%}">Seguir</a>
+                <a href="{% url 'SeguirUsuarios' usuario.pk%}">Seguir</a>
             </td>
         </tr>
         {% endfor %}

@@ -92,7 +92,7 @@ def añadir_seguido(request, id_seguido):
     NuevoSeguidor=Agregar_Seguidor.objects.get(seguidor=id_seguido)
     if seguidor.is_valid():
         seguidor = seguidor.save(commit=False)
-        seguidor.usuario=request.user.perfil
+        seguidor.usuario=request.user
         seguidor.save()
         if request.method == 'POST':
             seguidor.seguidor.add(NuevoSeguidor)
@@ -113,5 +113,6 @@ def editar_perfil(request):
         formulario = formulario.save(commit=False)
         formulario.usuario=request.user
         formulario.save()
+        return redirect('PerfilUsuario')
         formulario=PerfilForm()
     return render(request, 'MB/Perfil/formulario_perfil.html',{'form':formulario})
