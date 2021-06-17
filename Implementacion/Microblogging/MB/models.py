@@ -8,12 +8,13 @@ from datetime import datetime, timedelta
 seleccion_estado_etiqueta=[(1,'trabajo'),(2,'cuentas'),(3,'facturas')]
 
 class Perfil(models.Model):
-    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.CharField(max_length=255, blank=True)
-    web = models.URLField(blank=True)
-    first_name = models.CharField(max_length=50, blank=True)
-    last_name = models.CharField(max_length=50, blank=True)
-    email = models.CharField(max_length=100, blank=True)
+    usuario=models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
+    nombre=models.CharField(max_length=50, blank=True)
+    apellido=models.CharField(max_length=50, blank=True)
+    email=models.EmailField(blank=True)
+    telefono=models.IntegerField(max_length=10, blank=True, null=True)
+    cargo=models.CharField(max_length=50, blank=True)
+    imagen=models.ImageField(upload_to='Photos', blank=True)
 
     # Python 3
     def __str__(self): 

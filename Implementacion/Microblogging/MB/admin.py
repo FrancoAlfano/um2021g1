@@ -3,7 +3,7 @@ from .models import Perfil, Mensajes, Agregar_Seguidor
 
 @admin.register(Perfil)
 class PerfilAdmin(admin.ModelAdmin):
-    list_display = ('usuario', 'bio', 'web','first_name','last_name','email')
+    list_display = ('usuario','nombre','apellido','email')
 
 class MensajesAdmin(admin.ModelAdmin):
     list_display=('usuario','fecha','mensaje','etiqueta')
